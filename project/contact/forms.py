@@ -19,7 +19,8 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ('first_name', 'last_name', 'phone',)
+        fields = ('first_name', 'last_name', 'phone',
+                  'email', 'description','category',)
 
     def clean(self):
 
@@ -32,12 +33,5 @@ class ContactForm(forms.ModelForm):
             error_msg = ValidationError('Primeiro nome não pode ser igual ao sobrenome',code='invalid')
             self.add_error('first_name', error_msg)
             self.add_error('last_name', error_msg)
-        
-        self.add_error(
-            'first_name',
-            ValidationError(
-                'Error message',
-                code='Invalid'
-            )
-        ),
+            
         return super().clean()
