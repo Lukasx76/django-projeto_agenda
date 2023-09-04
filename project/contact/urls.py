@@ -5,9 +5,16 @@ app_name = 'contact'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('contact/create/', views.create, name='create'),
     path('contact/search/', views.search, name='search'),
+
+    # CRUD operations
+
+    path('contact/create/', views.create, name='create'),
     path('contact/<int:contact_id>/', views.contact, name='contact'),
     path('contact/<int:contact_id>/update', views.update, name='update'),
     path('contact/<int:contact_id>/delete', views.delete, name='delete'),
+    
+    # User creation
+
+    path('user/create/', views.register, name='register'),
 ]
